@@ -50,29 +50,50 @@ async function validateId(id) {
     }
 }
 
+// State management for views
+let currentView = null;
+let viewTimeouts = {};
+
 function showView(viewName) {
     const targetId = `view-${viewName}`;
+    console.log(`[View Manager] Switching to: ${viewName}`);
 
-    document.querySelectorAll('.view-layer').forEach(el => {
-        if (el.id === targetId) return; // Don't hide the view we're about to show!
-
-        el.classList.remove('active');
-        el.style.opacity = '0';
-        setTimeout(() => {
-            if (el.id !== targetId) { // Check again just in case
-                el.style.display = 'none';
-            }
-        }, 500);
+    // clear all pending timeouts to prevent unwanted hiding
+    Object.keys(viewTimeouts).forEach(key => {
+        clearTimeout(viewTimeouts[key]);
+        delete viewTimeouts[key];
     });
 
-    const target = document.getElementById(targetId);
-    if (target) {
-        target.style.display = 'flex';
-        // forced reflow
-        void target.offsetWidth;
-        target.classList.add('active');
-        target.style.opacity = '1';
-    }
+    document.querySelectorAll('.view-layer').forEach(el => {
+        const isTarget = el.id === targetId;
+
+        if (isTarget) {
+            el.style.display = 'flex';
+            // forced reflow
+            void el.offsetWidth;
+            el.classList.add('active');
+            el.style.opacity = '1';
+            currentView = viewName;
+        } else {
+            // If it's currently active/visible, fade it out
+            if (el.classList.contains('active') || el.style.opacity === '1') {
+                el.classList.remove('active');
+                el.style.opacity = '0';
+
+                // Allow transition to finish before hiding
+                viewTimeouts[el.id] = setTimeout(() => {
+                    el.style.display = 'none';
+                    if (viewTimeouts[el.id]) delete viewTimeouts[el.id];
+                }, 500);
+            } else {
+                // Already hidden or hiding, just ensure it's hidden immediately if not the target
+                // This prevents "ghost" views from staying if a timeout was cleared
+                el.style.display = 'none';
+                el.classList.remove('active');
+                el.style.opacity = '0';
+            }
+        }
+    });
 }
 
 function logAttempt(id, status) {
