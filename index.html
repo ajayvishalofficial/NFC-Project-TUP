@@ -27,6 +27,42 @@
 
     <!-- Home View -->
     <div id="view-home" class="view-layer">
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav">
+            <div class="nav-logo">VISHAL OFFSET</div>
+            <button class="hamburger-btn" aria-label="Open Menu">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </nav>
+
+        <div class="nav-overlay"></div>
+        <div class="side-menu">
+            <button class="close-menu-btn" aria-label="Close Menu">&times;</button>
+            <div class="menu-logo">VISHAL OFFSET</div>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link"
+                        onclick="document.querySelector('.home-hero').scrollIntoView({behavior: 'smooth'})">Home</a>
+                </li>
+                <li><a href="#" class="nav-link"
+                        onclick="document.getElementById('problem-section').scrollIntoView({behavior: 'smooth'})">The
+                        Mandate</a></li>
+                <li><a href="#" class="nav-link"
+                        onclick="document.querySelector('.feature-box').scrollIntoView({behavior: 'smooth'})">Hardware</a>
+                </li>
+                <li><a href="#" class="nav-link"
+                        onclick="document.querySelector('.dark-bg').scrollIntoView({behavior: 'smooth'})">Digital
+                        Experience</a></li>
+                <li><a href="#" class="nav-link"
+                        onclick="document.getElementById('analytics').scrollIntoView({behavior: 'smooth'})">Analytics</a>
+                </li>
+                <li><a href="#" class="nav-link"
+                        onclick="document.getElementById('process').scrollIntoView({behavior: 'smooth'})">Process</a>
+                </li>
+                <li><a href="#" class="nav-link"
+                        onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Contact</a>
+                </li>
+            </ul>
+        </div>
         <div class="home-wrapper">
             <!-- Hero Section -->
             <section class="home-hero">
