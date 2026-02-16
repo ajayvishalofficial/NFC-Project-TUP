@@ -2,16 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
     const tagId = params.get('id');
 
-    if (!tagId) {
-        showView('home');
-        // logAttempt(null, 'home_page_visit'); // Optional logging
-        return;
-    }
-
-    validateId(tagId);
+    // Initialize cursor for all views
     initCursor();
 
-    // Setup Home Navigation Buttons
+    // Setup Home Navigation Buttons (must be outside the if block)
     document.querySelectorAll('.nav-btn-home').forEach(btn => {
         btn.addEventListener('click', () => {
             // Remove the 'id' parameter from the URL using pushState
@@ -34,6 +28,14 @@ document.addEventListener('DOMContentLoaded', () => {
             reportBtn.style.opacity = '0.5';
             reportBtn.style.cursor = 'not-allowed';
         });
+    }
+
+    // Route based on presence of ID parameter
+    if (!tagId) {
+        showView('home');
+        // logAttempt(null, 'home_page_visit'); // Optional logging
+    } else {
+        validateId(tagId);
     }
 });
 
