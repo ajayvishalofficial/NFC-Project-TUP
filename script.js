@@ -51,13 +51,21 @@ async function validateId(id) {
 }
 
 function showView(viewName) {
+    const targetId = `view-${viewName}`;
+
     document.querySelectorAll('.view-layer').forEach(el => {
+        if (el.id === targetId) return; // Don't hide the view we're about to show!
+
         el.classList.remove('active');
         el.style.opacity = '0';
-        setTimeout(() => el.style.display = 'none', 500);
+        setTimeout(() => {
+            if (el.id !== targetId) { // Check again just in case
+                el.style.display = 'none';
+            }
+        }, 500);
     });
 
-    const target = document.getElementById(`view-${viewName}`);
+    const target = document.getElementById(targetId);
     if (target) {
         target.style.display = 'flex';
         // forced reflow
@@ -80,16 +88,69 @@ function hydrateProductDetails(id) {
 }
 
 function initCursor() {
-    const cursor = document.querySelector('.custom-cursor');
+    const canvas = document.getElementById('ripple-canvas');
+    if (!canvas || !matchMedia('(pointer:fine)').matches) return;
 
-    if (matchMedia('(pointer:fine)').matches) {
-        document.addEventListener('mousemove', (e) => {
-            // Using left/top for positioning to rely on CSS translate(-50%, -50%) for centering
-            cursor.style.left = `${e.clientX}px`;
-            cursor.style.top = `${e.clientY}px`;
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let ripples = [];
+
+    function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Create a new ripple
+    function createRipple(x, y) {
+        ripples.push({
+            x: x,
+            y: y,
+            radius: 0,
+            alpha: 0.6,
+            color: `120, 255, 120` // Green-ish
+        });
+    }
+
+    // Animation Loop
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        ripples.forEach((ripple, index) => {
+            ripple.radius += 2.5; // Expansion speed
+            ripple.alpha -= 0.015; // Fade speed
+
+            ctx.beginPath();
+            ctx.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${ripple.color}, ${ripple.alpha})`;
+            ctx.fill();
+
+            if (ripple.alpha <= 0) {
+                ripples.splice(index, 1);
+            }
         });
 
-        document.addEventListener('mousedown', () => cursor.classList.add('expand'));
-        document.addEventListener('mouseup', () => cursor.classList.remove('expand'));
+        requestAnimationFrame(animate);
     }
+
+    animate();
+
+    // Event Listeners
+    document.addEventListener('mousemove', (e) => {
+        // limit ripple creation rate for performance? 
+        // For now, let's create one every few frames or just on move. 
+        // A trailing effect is requested "follows the cursor movement".
+        // Let's adding ripples frequently creates a trail.
+        if (Math.random() > 0.7) // Throttling slightly for style
+            createRipple(e.clientX, e.clientY);
+    });
+
+    document.addEventListener('click', (e) => {
+        // larger ripple on click
+        for (let i = 0; i < 3; i++) {
+            setTimeout(() => createRipple(e.clientX, e.clientY), i * 100);
+        }
+    });
 }

@@ -30,27 +30,15 @@ body {
 }
 
 /* Custom Cursor */
-.custom-cursor {
+/* Ripple Canvas */
+#ripple-canvas {
     position: fixed;
     top: 0;
     left: 0;
-    width: 20px;
-    height: 20px;
-    background: rgba(66, 133, 244, 0.5);
-    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
     pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: width 0.2s, height 0.2s;
-    /* Removed transform transition for instant tracking */
-    backdrop-filter: invert(1);
-    mix-blend-mode: difference;
-    will-change: left, top, width, height;
-}
-
-.custom-cursor.expand {
-    width: 40px;
-    height: 40px;
 }
 
 /* View Layers */
@@ -67,12 +55,24 @@ body {
     align-items: center;
     padding: 2rem;
     transition: opacity 0.5s ease;
-    opacity: 0;
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    -webkit-overflow-scrolling: touch;
+    /* Smooth scroll on iOS */
 }
 
 .view-layer.active {
     display: flex;
     opacity: 1;
+}
+
+/* Ensure content doesn't get clipped when scrolling */
+.view-layer::before,
+.view-layer::after {
+    content: '';
+    flex-basis: 2rem;
+    /* Add some spacing at top/bottom when scrolling */
+    flex-shrink: 0;
 }
 
 /* Glass Panel */
