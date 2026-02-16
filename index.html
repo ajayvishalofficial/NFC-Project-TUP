@@ -30,203 +30,284 @@
         <div class="home-wrapper">
             <!-- Hero Section -->
             <section class="home-hero">
-                <h1 class="hero-brand">VISHAL OFFSET PRINTS</h1>
-                <div class="hero-line"></div>
-                <h2 class="hero-title">Beyond the Thread</h2>
-                <p class="hero-tagline">Transforming Premium Apparel Into Secure, Interactive Digital Assets</p>
+                <div class="hero-content">
+                    <h1 class="hero-brand">VISHAL OFFSET PRINTS</h1>
+                    <div class="hero-line"></div>
+                    <h2 class="hero-title">Beyond the Thread</h2>
+                    <p class="hero-tagline">Transforming Premium Apparel Into Secure, Interactive Digital Assets</p>
 
-                <div class="hero-image">
-                    <img src="hangtag_sample .png" alt="Premium NFC Hangtag">
+                    <div class="hero-actions">
+                        <button class="md-btn primary"
+                            onclick="document.getElementById('problem-section').scrollIntoView({behavior: 'smooth'})">Discover
+                            the Standard</button>
+                    </div>
                 </div>
 
-                <div class="hero-footer">
-                    <p class="hero-main-claim">The Enterprise Standard for Apparel Authentication</p>
-                    <p class="hero-sub-claim">Protect your legacy. Satisfy EU DPP mandates. Drive post-purchase ROI.</p>
-                    <div class="tech-pills">
-                        <span class="tech-pill">Cryptographic NFC</span>
-                        <span class="tech-pill">Seamless Integration</span>
-                        <span class="tech-pill">Cloud Analytics</span>
+                <div class="hero-image-container">
+                    <img src="hangtag_sample .png" alt="Premium NFC Hangtag" class="hero-img floating">
+                </div>
+
+                <div class="hero-footer-badges">
+                    <div class="badge-item">
+                        <span class="material-symbols-outlined">nfc</span>
+                        <span>Cryptographic NFC</span>
+                    </div>
+                    <div class="badge-divider"></div>
+                    <div class="badge-item">
+                        <span class="material-symbols-outlined">print</span>
+                        <span>Seamless Integration</span>
+                    </div>
+                    <div class="badge-divider"></div>
+                    <div class="badge-item">
+                        <span class="material-symbols-outlined">cloud</span>
+                        <span>Cloud Analytics</span>
                     </div>
                 </div>
             </section>
 
-            <!-- Problem Section -->
-            <section class="home-section">
-                <h2 class="home-section-title">The Global Mandate for Provenance</h2>
-                <div class="home-section-line"></div>
+            <!-- Problem & Hardware Section -->
+            <section class="home-section" id="problem-section">
+                <div class="section-header">
+                    <h2 class="section-title">The Global Mandate for Provenance</h2>
+                    <div class="section-divider"></div>
+                </div>
 
                 <div class="problem-grid">
-                    <div class="problem-card">
+                    <div class="md-card problem">
+                        <div class="card-icon error">
+                            <span class="material-symbols-outlined">warning</span>
+                        </div>
                         <h3>The $500B Counterfeit Crisis</h3>
-                        <p>Global apparel brands lose hundreds of billions annually to grey-market diversions and
-                            counterfeiting. Traditional security measures—holograms and static QR codes—are easily
-                            replicated.</p>
+                        <p>Global apparel brands lose billions to grey-market diversions. Traditional holograms and
+                            static QR codes are no longer sufficient to protect brand equity.</p>
                     </div>
-                    <div class="problem-card">
-                        <h3>EU Digital Product Passport (DPP)</h3>
-                        <p>European regulators mandate verifiable data on raw material origin, labor audits, and
-                            circular economy metrics. Brands lacking digital infrastructure face customs embargoes.</p>
+                    <div class="md-card problem">
+                        <div class="card-icon success">
+                            <span class="material-symbols-outlined">policy</span>
+                        </div>
+                        <h3>EU Digital Product Passport</h3>
+                        <p>New regulations mandate verifiable data on origin and sustainability. Brands without digital
+                            infrastructure will face customs embargoes.</p>
                     </div>
                 </div>
 
-                <div class="solution-box">
-                    <h3 class="solution-title">The Hardware Solution: Bank-Grade NFC Integration</h3>
-                    <p class="solution-desc">We embed ultra-thin, secure NFC microchips invisibly between premium paper
-                        layers. Powered by NTAG 424 DNA architecture for enterprise-grade security.</p>
-                    <ul class="solution-list">
-                        <li><strong>Dynamic URL Cryptography (SUN):</strong> Unique, AES-128 encrypted code on every
-                            tap. Impossible to clone.</li>
-                        <li><strong>Frictionless Activation:</strong> No batteries. No app required. Powered by
-                            smartphone induction.</li>
-                        <li><strong>Tamper-Evident:</strong> Extracting the inlay destroys the chip, ensuring pairing
-                            with genuine garment.</li>
-                    </ul>
-                </div>
-
-                <div class="tech-visual">
-                    <img src="exploded_view.png" alt="NFC Tag Construction">
+                <div class="feature-box hardware-solution">
+                    <div class="feature-content">
+                        <h3>The Hardware Solution: Bank-Grade NFC Integration</h3>
+                        <p>We embed ultra-thin, secure NTAG 424 DNA microchips invisibly between premium paper layers.
+                        </p>
+                        <ul class="feature-list">
+                            <li>
+                                <span class="material-symbols-outlined">lock</span>
+                                <div><strong>Dynamic URL Cryptography (SUN):</strong> AES-128 encrypted code on every
+                                    tap. Impossible to clone.</div>
+                            </li>
+                            <li>
+                                <span class="material-symbols-outlined">bolt</span>
+                                <div><strong>Frictionless Activation:</strong> No batteries or app required. Powered by
+                                    smartphone induction.</div>
+                            </li>
+                            <li>
+                                <span class="material-symbols-outlined">block</span>
+                                <div><strong>Tamper-Evident:</strong> Extracting the chip destroys it, keeping the tag
+                                    physically paired to the garment.</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="feature-image">
+                        <img src="exploded_view.png" alt="NFC Tag Explorer View">
+                    </div>
                 </div>
             </section>
 
-            <!-- Portal Section -->
-            <section class="home-section dark">
-                <h2 class="home-section-title light">The Consumer Web3 Portal</h2>
-                <p class="home-section-subtitle">One Tap. Infinite Possibilities. Zero App Required.</p>
+            <!-- Digital Experience Section -->
+            <section class="home-section dark-bg">
+                <div class="section-header light-text">
+                    <h2 class="section-title">The Consumer Web3 Portal</h2>
+                    <p class="section-subtitle">One Tap. Infinite Possibilities. Zero App Required.</p>
+                </div>
 
-                <div class="portal-flow">
-                    <div class="flow-center">Consumer Smartphone Tap</div>
-                    <div class="flow-arrow">↓</div>
-                    <div class="flow-features">
-                        <div class="flow-feature">
-                            <div class="feature-title">Absolute Authentication</div>
-                            <div class="feature-desc">Real-time counterfeit defense</div>
+                <div class="experience-flow">
+                    <div class="flow-step main">
+                        <span class="material-symbols-outlined">smartphone</span>
+                        <span>Consumer Tap</span>
+                    </div>
+                    <div class="flow-connectors">
+                        <div class="connector-line"></div>
+                        <div class="connector-line"></div>
+                        <div class="connector-line"></div>
+                    </div>
+                    <div class="flow-outcomes">
+                        <div class="outcome-card">
+                            <span class="material-symbols-outlined">verified_user</span>
+                            <h4>Authentication</h4>
+                            <p>Real-time defense</p>
                         </div>
-                        <div class="flow-feature">
-                            <div class="feature-title">Supply Chain Provenance</div>
-                            <div class="feature-desc">EU DPP Compliance</div>
+                        <div class="outcome-card">
+                            <span class="material-symbols-outlined">factory</span>
+                            <h4>Provenance</h4>
+                            <p>DPP Compliance</p>
                         </div>
-                        <div class="flow-feature">
-                            <div class="feature-title">Post-Purchase Ecosystem</div>
-                            <div class="feature-desc">Direct-to-Consumer ROI</div>
+                        <div class="outcome-card">
+                            <span class="material-symbols-outlined">loyalty</span>
+                            <h4>Engagement</h4>
+                            <p>Post-Purchase ROI</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="demo-grid">
-                    <div class="demo-card valid">
-                        <h4>The Genuine Scan</h4>
-                        <div class="demo-screenshot">
-                            <img src="approved_shot.png" alt="Verified Product">
+                <div class="app-showcase">
+                    <div class="showcase-item">
+                        <div class="screenshot-box success">
+                            <div class="status-bar">Generated Genuine Scan</div>
+                            <img src="approved_shot.png" alt="Verified Screen">
                         </div>
-                        <p><strong>Verified & Compliant</strong><br>Instantly prove authenticity and showcase
-                            eco-certifications.</p>
-                        <a href="?id=1001-TI-ECO-2024" class="demo-btn valid">Try Live Demo →</a>
+                        <div class="showcase-desc">
+                            <h4>Verified & Compliant</h4>
+                            <p>Instantly prove authenticity and showcase factory compliance.</p>
+                            <a href="?id=1001-TI-ECO-2024" class="md-link accent">Simulate Genuine Tap <span
+                                    class="material-symbols-outlined">arrow_forward</span></a>
+                        </div>
                     </div>
-                    <div class="demo-card invalid">
-                        <h4>The Anomaly Warning</h4>
-                        <div class="demo-screenshot">
-                            <img src="counterfeit_shot.png" alt="Counterfeit Alert">
+                    <div class="showcase-item">
+                        <div class="screenshot-box warning">
+                            <div class="status-bar">Generated Anomaly</div>
+                            <img src="counterfeit_shot.png" alt="Warning Screen">
                         </div>
-                        <p><strong>Proactive Threat Defense</strong><br>Invalid signatures block users and flag IPs.</p>
-                        <a href="?id=FAKE-ID-999" class="demo-btn invalid">Try Live Demo →</a>
+                        <div class="showcase-desc">
+                            <h4>Proactive Threat Defense</h4>
+                            <p>Invalid cryptographic signatures trigger instant alerts.</p>
+                            <a href="?id=FAKE-ID-999" class="md-link danger">Simulate Counterfeit Tap <span
+                                    class="material-symbols-outlined">arrow_forward</span></a>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <!-- Analytics Section -->
             <section class="home-section">
-                <h2 class="home-section-title">Data-Driven Retail Intelligence</h2>
-                <p>Every product becomes a digital data-node. Track grey-market diversions and measure campaign ROI.</p>
+                <div class="section-header">
+                    <h2 class="section-title">Data-Driven Retail Intelligence</h2>
+                </div>
 
-                <div class="analytics-preview">
-                    <div class="analytics-sidebar">
-                        <div class="analytics-logo">Vishal<span>Verify</span></div>
-                        <div class="analytics-nav">
-                            <div class="nav-item active">Analytics</div>
-                            <div class="nav-item">Live Map</div>
-                            <div class="nav-item">Security Alerts</div>
+                <div class="dashboard-mockup">
+                    <div class="dash-sidebar">
+                        <div class="dash-logo">Vishal<span>Verify</span></div>
+                        <div class="dash-menu">
+                            <div class="dash-item active"><span class="material-symbols-outlined">analytics</span>
+                                Overview</div>
+                            <div class="dash-item"><span class="material-symbols-outlined">public</span> Live Map</div>
+                            <div class="dash-item"><span class="material-symbols-outlined">inventory_2</span> Batch
+                                Manager</div>
                         </div>
                     </div>
-                    <div class="analytics-content">
-                        <h5>Global Authentication Dashboard</h5>
-                        <div class="stats-row">
-                            <div class="stat-card">
-                                <span class="stat-label">Total Scans</span>
-                                <span class="stat-value">14,289</span>
+                    <div class="dash-main">
+                        <div class="dash-header">Global Authentication Dashboard</div>
+                        <div class="dash-stats">
+                            <div class="dash-stat">
+                                <label>Total Scans</label>
+                                <div class="value">14,289</div>
                             </div>
-                            <div class="stat-card">
-                                <span class="stat-label">Authentic</span>
-                                <span class="stat-value success">14,212</span>
+                            <div class="dash-stat">
+                                <label>Authentic</label>
+                                <div class="value success">14,212</div>
                             </div>
-                            <div class="stat-card">
-                                <span class="stat-label">Anomalies</span>
-                                <span class="stat-value danger">77</span>
+                            <div class="dash-stat">
+                                <label>Anomalies</label>
+                                <div class="value danger">77</div>
                             </div>
                         </div>
-                        <div class="chart-placeholder">📊 Analytics Chart</div>
+                        <div class="dash-chart">
+                            <div class="fake-chart-line"></div>
+                            <div class="fake-chart-dots"></div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Implementation Section -->
-            <section class="home-section">
-                <h2 class="home-section-title">Frictionless Implementation</h2>
-                <p class="home-section-subtitle">Zero disruption to your Tier-1 factory packing lines</p>
+            <!-- Process Section -->
+            <section class="home-section bg-light">
+                <div class="section-header">
+                    <h2 class="section-title">Frictionless Implementation</h2>
+                    <p class="section-subtitle">Zero disruption to factory packing lines</p>
+                </div>
 
-                <div class="steps-grid">
-                    <div class="step-card">
-                        <div class="step-number">1</div>
-                        <h4>Design & Architecture</h4>
-                        <p>We match your brand identity and host the mobile-optimized Web3 portal.</p>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-num">01</div>
+                        <h4>Design & Arch</h4>
+                        <p>We match your brand identity and host the Web3 portal.</p>
                     </div>
-                    <div class="step-card">
-                        <div class="step-number">2</div>
+                    <div class="process-step">
+                        <div class="step-num">02</div>
                         <h4>Secure Encoding</h4>
-                        <p>Program thousands of NTAG chips with dynamic, unclonable URLs.</p>
+                        <p>High-speed programming of unique, unclonable URLs.</p>
                     </div>
-                    <div class="step-card">
-                        <div class="step-number">3</div>
-                        <h4>Premium Manufacturing</h4>
-                        <p>Spot-UV, metallic foils, and FSC-certified cardstock embed chips seamlessly.</p>
+                    <div class="process-step">
+                        <div class="step-num">03</div>
+                        <h4>Manufacturing</h4>
+                        <p>Spot-UV, metallic foils, and seamless chip embedding.</p>
                     </div>
-                    <div class="step-card">
-                        <div class="step-number">4</div>
+                    <div class="process-step">
+                        <div class="step-num">04</div>
                         <h4>Pack & Ship</h4>
-                        <p>Tags arrive ready for string-attachment. No factory IT training required.</p>
+                        <p>Ready for string-attachment. No IT training needed.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- Why Us Section -->
-            <section class="home-section advantage">
-                <h2 class="advantage-title">The Vishal Offset Advantage</h2>
-                <div class="advantage-grid">
-                    <div class="advantage-item">
-                        <strong>Legacy Meets Future</strong>
-                        <p>20+ years of print mastery plus cutting-edge cryptographic software.</p>
-                    </div>
-                    <div class="advantage-item">
-                        <strong>End-to-End Ownership</strong>
-                        <p>Physical tags, chips, and cloud analytics in one contract.</p>
-                    </div>
-                    <div class="advantage-item">
-                        <strong>Sustainable Production</strong>
-                        <p>FSC-certified papers and soy-based eco-inks align with EU DPP ethos.</p>
-                    </div>
-                    <div class="advantage-item">
-                        <strong>Guaranteed ROI</strong>
-                        <p>Transform packaging cost into dynamic marketing asset.</p>
+            <!-- Advantage Section -->
+            <section class="home-section dark-box-section">
+                <div class="dark-box">
+                    <h2 class="box-title">The Vishal Offset Advantage</h2>
+                    <div class="advantage-list">
+                        <div class="adv-item">
+                            <span class="material-symbols-outlined">print</span>
+                            <div>
+                                <strong>Legacy Meets Future</strong>
+                                <p>20+ years of high-end print mastery combined with cutting-edge software.</p>
+                            </div>
+                        </div>
+                        <div class="adv-item">
+                            <span class="material-symbols-outlined">handshake</span>
+                            <div>
+                                <strong>End-to-End Ownership</strong>
+                                <p>Tags, chips, and cloud analytics in one single contract.</p>
+                            </div>
+                        </div>
+                        <div class="adv-item">
+                            <span class="material-symbols-outlined">recycling</span>
+                            <div>
+                                <strong>Sustainable Production</strong>
+                                <p>FSC-certified papers and soy-based inks aligning with EU mandates.</p>
+                            </div>
+                        </div>
+                        <div class="adv-item">
+                            <span class="material-symbols-outlined">trending_up</span>
+                            <div>
+                                <strong>Guaranteed ROI</strong>
+                                <p>Transform packaging costs into a dynamic marketing asset.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <!-- Footer -->
             <footer class="home-footer">
-                <div class="footer-line"></div>
-                <h3 class="footer-cta">Digitize Your Next Export Batch Today</h3>
-                <div class="footer-contact">
-                    <p><strong>VISHAL OFFSET PRINTS</strong> | Tirupur, Tamil Nadu</p>
-                    <p>vishalprints01@gmail.com • www.vishaloffsetprints.com • +91 99947 00500</p>
+                <div class="footer-cta">
+                    <h3>Digitize Your Next Export Batch Today.</h3>
+                </div>
+                <div class="footer-info">
+                    <div class="footer-brand">VISHAL OFFSET PRINTS</div>
+                    <div class="footer-loc">Tirupur, Tamil Nadu</div>
+                    <div class="footer-links">
+                        <span>vishalprints01@gmail.com</span>
+                        <span class="separator">•</span>
+                        <span>www.vishaloffsetprints.com</span>
+                        <span class="separator">•</span>
+                        <span>+91 99947 00500</span>
+                    </div>
                 </div>
             </footer>
         </div>
