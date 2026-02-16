@@ -133,7 +133,7 @@ function initCursor() {
             y: y,
             radius: 0,
             alpha: 0.6,
-            color: `120, 255, 120` // Green-ish
+            color: `122, 158, 88` // Nature Green
         });
     }
 

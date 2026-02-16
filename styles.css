@@ -1,24 +1,22 @@
 :root {
-    --primary-auth: #5C8A3A;
-    /* Eco Green */
-    --primary-fail: #B85C4E;
-    /* Terracotta Red */
-    --accent: #7A9E6F;
-    /* Sage Green */
-    --neutral-dark: #3E3228;
-    /* Dark Brown */
-    --neutral-light: #F5F1E8;
-    /* Cream */
-    --kraft-light: #E8D5B7;
-    /* Light Kraft */
-    --kraft-medium: #D4A574;
-    /* Medium Kraft */
-    --kraft-dark: #C19A6B;
-    /* Dark Kraft */
-    --cardboard: #B8956A;
-    /* Cardboard */
-    --glass-bg: rgba(245, 241, 232, 0.9);
-    --glass-border: rgba(212, 165, 116, 0.4);
+    --primary-auth: #4A7A45;
+    /* Forest Green */
+    --primary-fail: #8B4033;
+    /* Rust Red */
+    --accent: #5C8A3A;
+    /* Leaf Green */
+    --neutral-dark: #2C241B;
+    /* Deep Loam */
+    --neutral-light: #F0EAD6;
+    /* Eggshell */
+    --earth-deep: #3E3228;
+    --earth-mid: #5D4037;
+    --earth-light: #8D6E63;
+    --leaf-dark: #2E4A28;
+    --leaf-mid: #4A6E3A;
+    --leaf-light: #7A9E58;
+    --glass-bg: rgba(240, 234, 214, 0.9);
+    --glass-border: rgba(93, 64, 55, 0.3);
     --font-main: 'Outfit', sans-serif;
 }
 
@@ -30,32 +28,23 @@
 
 body {
     font-family: var(--font-main);
-    background: linear-gradient(135deg, var(--kraft-light) 0%, var(--kraft-medium) 100%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    /* Fallback */
+    background: radial-gradient(circle at 50% 50%, #2E4A28 0%, #1a1a1a 100%);
     color: var(--neutral-dark);
     min-height: 100vh;
+    min-height: 100dvh;
+    /* Dynamic viewport height */
     overflow-x: hidden;
     overflow-y: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    /* Ensure scrollbar works */
 }
 
-/* Cardboard texture overlay */
-body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0, 0, 0, .02) 2px, rgba(0, 0, 0, .02) 4px),
-        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, .02) 2px, rgba(0, 0, 0, .02) 4px);
-    opacity: 0.3;
-    pointer-events: none;
-    z-index: 1;
-}
+
 
 /* Custom Cursor */
 /* Ripple Canvas */
@@ -70,12 +59,14 @@ body::after {
 }
 
 /* View Layers */
+/* View Layers */
 .view-layer {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    height: 100dvh;
     display: none;
     /* Hidden by default */
     flex-direction: column;
@@ -91,18 +82,22 @@ body::after {
     z-index: 10;
 }
 
+/* Ensure content is centered but scrollable if too tall */
+.view-layer::before {
+    content: '';
+    flex: 1 0 auto;
+    height: 1rem;
+}
+
+.view-layer::after {
+    content: '';
+    flex: 1 0 auto;
+    height: 1rem;
+}
+
 .view-layer.active {
     display: flex;
     opacity: 1;
-}
-
-/* Ensure content doesn't get clipped when scrolling */
-.view-layer::before,
-.view-layer::after {
-    content: '';
-    flex-basis: 2rem;
-    /* Add some spacing at top/bottom when scrolling */
-    flex-shrink: 0;
 }
 
 /* Glass Panel */
@@ -192,7 +187,7 @@ p {
 }
 
 .info-block.highlight {
-    background: linear-gradient(135deg, rgba(52, 168, 83, 0.1), rgba(66, 133, 244, 0.1));
+    background: linear-gradient(135deg, rgba(74, 122, 69, 0.1), rgba(141, 110, 99, 0.1));
 }
 
 /* Warning State Specifics */
@@ -291,36 +286,39 @@ body::before {
 @media (max-width: 600px) {
     body {
         align-items: flex-start;
-        padding-top: env(safe-area-inset-top);
-        padding-bottom: env(safe-area-inset-bottom);
+        /* Allow content to flow naturally from top */
     }
 
     .view-layer {
         padding: 1rem;
+        /* Ensure padding respects safe areas */
         padding-top: max(1rem, env(safe-area-inset-top));
         padding-bottom: max(1rem, env(safe-area-inset-bottom));
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
         justify-content: flex-start;
+        /* Start from top */
     }
 
+    /* Spacer to push content down a bit visually if not scrolling */
     .view-layer::before {
-        flex-basis: 1rem;
-    }
-
-    .view-layer::after {
-        flex-basis: 3rem;
+        flex: 0 0 auto;
+        min-height: 2rem;
     }
 
     .glass-panel {
         padding: 1.5rem;
-        margin: 0.5rem;
-        width: calc(100% - 1rem);
+        margin: 0;
+        width: 100%;
         max-width: 100%;
-        border-radius: 16px;
+        border-radius: 20px;
+        /* Slightly less rounded on mobile */
     }
 
     h1 {
         font-size: 1.5rem;
         letter-spacing: -0.5px;
+        margin-top: 0.5rem;
     }
 
     h3 {
@@ -328,16 +326,17 @@ body::before {
     }
 
     p {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .content-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
+        margin: 1.5rem 0;
     }
 
     .info-block {
-        padding: 0.875rem;
+        padding: 1rem;
     }
 
     .info-block[style*="span 2"] {
@@ -347,16 +346,19 @@ body::before {
     .status-badge {
         font-size: 0.85rem;
         padding: 6px 12px;
+        margin-bottom: 1.5rem;
     }
 
     .action-btn {
-        padding: 10px 20px;
-        font-size: 0.9rem;
+        padding: 12px 24px;
+        font-size: 1rem;
+        width: 100%;
+        /* Full width button on mobile */
     }
 
     .spinner {
-        width: 32px;
-        height: 32px;
+        width: 36px;
+        height: 36px;
     }
 }
 
