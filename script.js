@@ -133,7 +133,7 @@ function initCursor() {
             y: y,
             radius: 0,
             alpha: 0.6,
-            color: `122, 158, 88` // Nature Green
+            color: `20, 184, 166` // Teal
         });
     }
 
