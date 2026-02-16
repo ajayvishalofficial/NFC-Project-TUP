@@ -112,11 +112,12 @@ function hydrateProductDetails(id) {
 
 function initCursor() {
     const canvas = document.getElementById('ripple-canvas');
-    if (!canvas || !matchMedia('(pointer:fine)').matches) return;
+    if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
     let width, height;
     let ripples = [];
+    const isMobile = !matchMedia('(pointer:fine)').matches;
 
     function resize() {
         width = canvas.width = window.innerWidth;
@@ -127,13 +128,16 @@ function initCursor() {
     resize();
 
     // Create a new ripple
-    function createRipple(x, y) {
+    function createRipple(x, y, isLarge = false) {
         ripples.push({
             x: x,
             y: y,
             radius: 0,
-            alpha: 0.6,
-            color: `20, 184, 166` // Teal
+            maxRadius: isLarge ? 120 : 80,
+            alpha: isLarge ? 0.5 : 0.6,
+            speed: isLarge ? 2 : 2.5,
+            fadeSpeed: isLarge ? 0.008 : 0.015,
+            color: `52, 168, 83` // Vibrant Green
         });
     }
 
@@ -142,15 +146,20 @@ function initCursor() {
         ctx.clearRect(0, 0, width, height);
 
         ripples.forEach((ripple, index) => {
-            ripple.radius += 2.5; // Expansion speed
-            ripple.alpha -= 0.015; // Fade speed
+            ripple.radius += ripple.speed;
+            ripple.alpha -= ripple.fadeSpeed;
 
             ctx.beginPath();
             ctx.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
             ctx.fillStyle = `rgba(${ripple.color}, ${ripple.alpha})`;
             ctx.fill();
 
-            if (ripple.alpha <= 0) {
+            // Add a subtle ring effect
+            ctx.strokeStyle = `rgba(${ripple.color}, ${ripple.alpha * 0.5})`;
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            if (ripple.alpha <= 0 || ripple.radius >= ripple.maxRadius) {
                 ripples.splice(index, 1);
             }
         });
@@ -160,20 +169,69 @@ function initCursor() {
 
     animate();
 
-    // Event Listeners
-    document.addEventListener('mousemove', (e) => {
-        // limit ripple creation rate for performance? 
-        // For now, let's create one every few frames or just on move. 
-        // A trailing effect is requested "follows the cursor movement".
-        // Let's adding ripples frequently creates a trail.
-        if (Math.random() > 0.7) // Throttling slightly for style
-            createRipple(e.clientX, e.clientY);
-    });
+    if (isMobile) {
+        // Auto-blooming effect for mobile - ripples move across screen
+        let autoBloomX = Math.random() * width;
+        let autoBloomY = Math.random() * height;
+        let velocityX = (Math.random() - 0.5) * 2; // Random direction
+        let velocityY = (Math.random() - 0.5) * 2;
 
-    document.addEventListener('click', (e) => {
-        // larger ripple on click
-        for (let i = 0; i < 3; i++) {
-            setTimeout(() => createRipple(e.clientX, e.clientY), i * 100);
+        function autoBloom() {
+            // Create ripple at current position
+            createRipple(autoBloomX, autoBloomY, true);
+
+            // Update position
+            autoBloomX += velocityX;
+            autoBloomY += velocityY;
+
+            // Bounce off edges and change direction slightly
+            if (autoBloomX <= 0 || autoBloomX >= width) {
+                velocityX = -velocityX + (Math.random() - 0.5) * 0.5;
+                autoBloomX = Math.max(0, Math.min(width, autoBloomX));
+            }
+            if (autoBloomY <= 0 || autoBloomY >= height) {
+                velocityY = -velocityY + (Math.random() - 0.5) * 0.5;
+                autoBloomY = Math.max(0, Math.min(height, autoBloomY));
+            }
+
+            // Gradually change direction for organic movement
+            velocityX += (Math.random() - 0.5) * 0.1;
+            velocityY += (Math.random() - 0.5) * 0.1;
+
+            // Limit velocity
+            const maxVelocity = 3;
+            velocityX = Math.max(-maxVelocity, Math.min(maxVelocity, velocityX));
+            velocityY = Math.max(-maxVelocity, Math.min(maxVelocity, velocityY));
         }
-    });
+
+        // Create auto-bloom every 800ms
+        setInterval(autoBloom, 800);
+    } else {
+        // Desktop: Enhanced cursor tracking
+        let lastX = 0, lastY = 0;
+        let lastTime = Date.now();
+
+        document.addEventListener('mousemove', (e) => {
+            const currentTime = Date.now();
+            const timeDelta = currentTime - lastTime;
+            const distance = Math.sqrt(
+                Math.pow(e.clientX - lastX, 2) + Math.pow(e.clientY - lastY, 2)
+            );
+
+            // Create ripples based on movement speed
+            if (distance > 5 && timeDelta > 30) {
+                createRipple(e.clientX, e.clientY);
+                lastX = e.clientX;
+                lastY = e.clientY;
+                lastTime = currentTime;
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            // Larger ripple burst on click
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => createRipple(e.clientX, e.clientY, true), i * 100);
+            }
+        });
+    }
 }
