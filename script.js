@@ -75,8 +75,11 @@ function showView(viewName) {
             el.style.opacity = '1';
             currentView = viewName;
         } else {
-            // If it's currently active/visible, fade it out
-            if (el.classList.contains('active') || el.style.opacity === '1') {
+            // Check if element is currently visible (using computed style OR has active class)
+            const computedOpacity = window.getComputedStyle(el).opacity;
+            const isVisible = el.classList.contains('active') || parseFloat(computedOpacity) > 0;
+
+            if (isVisible) {
                 el.classList.remove('active');
                 el.style.opacity = '0';
 
@@ -86,8 +89,7 @@ function showView(viewName) {
                     if (viewTimeouts[el.id]) delete viewTimeouts[el.id];
                 }, 500);
             } else {
-                // Already hidden or hiding, just ensure it's hidden immediately if not the target
-                // This prevents "ghost" views from staying if a timeout was cleared
+                // Already hidden, ensure it stays hidden
                 el.style.display = 'none';
                 el.classList.remove('active');
                 el.style.opacity = '0';

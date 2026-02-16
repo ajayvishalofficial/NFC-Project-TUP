@@ -59,6 +59,7 @@ body {
     /* Enable vertical scrolling */
     -webkit-overflow-scrolling: touch;
     /* Smooth scroll on iOS */
+    opacity: 0;
 }
 
 .view-layer.active {
