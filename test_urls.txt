@@ -1,0 +1,18 @@
+Test URLs for NFC Authentication Project
+Base URL: https://ajayvishalofficial.github.io/NFC-Project-TUP/
+
+1. Valid Authentication (Should show "Verified Authentic")
+---------------------------------------------------------
+https://ajayvishalofficial.github.io/NFC-Project-TUP/?id=1001-TI-ECO-2024
+https://ajayvishalofficial.github.io/NFC-Project-TUP/?id=1002-TI-ECO-2024
+https://ajayvishalofficial.github.io/NFC-Project-TUP/?id=1003-TI-ECO-2024
+https://ajayvishalofficial.github.io/NFC-Project-TUP/?id=TEST-AUTH-ID-01
+
+2. Invalid/Counterfeit Simulation (Should show "Authentication Failed")
+-----------------------------------------------------------------------
+https://ajayvishalofficial.github.io/NFC-Project-TUP/?id=FAKE-ID-999
+https://ajayvishalofficial.github.io/NFC-Project-TUP/?id=COUNTERFEIT-PRODUCT
+
+3. Missing ID (Should show "Authentication Failed" or Error)
+------------------------------------------------------------
+https://ajayvishalofficial.github.io/NFC-Project-TUP/
