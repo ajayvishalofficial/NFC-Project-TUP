@@ -56,7 +56,7 @@ body {
     color: #333;
     min-height: 100vh;
     overflow-x: hidden;
-    overflowscroll-y: auto;
+    overflow-y: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -397,18 +397,30 @@ body {
     width: 100%;
 }
 
-/* Dark Section (Experience) */
+/* Dark Section (Experience) - Redesigned as Contained Box */
 .home-section.dark-bg {
-    background: linear-gradient(135deg, var(--brand-blue) 0%, #001a3d 100%);
+    background: transparent;
+    color: inherit;
+    padding: 5rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.home-section.dark-bg .section-header,
+.home-section.dark-bg .experience-flow,
+.home-section.dark-bg .app-showcase {
+    background: linear-gradient(135deg, rgba(0, 45, 98, 0.95) 0%, rgba(0, 26, 61, 0.95) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    border-radius: 40px;
+    padding: 4rem;
+    box-shadow: 0 20px 60px rgba(0, 45, 98, 0.3);
     color: white;
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    padding: 6rem 2rem;
-    box-shadow: inset 0 2px 0 rgba(197, 160, 89, 0.1);
+}
+
+.home-section.dark-bg .section-header {
+    margin-bottom: 2rem;
 }
 
 .section-header.light-text h2 {
@@ -961,7 +973,24 @@ body {
 .mobile-nav:hover {
     box-shadow: 0 12px 48px rgba(0, 45, 98, 0.15);
     background: rgba(255, 255, 255, 0.85);
-    width: 92%;
+}
+
+/* Navbar Scroll State */
+.mobile-nav.scrolled {
+    top: 0.75rem;
+    padding: 0.5rem 1.25rem;
+    width: 85%;
+    max-width: 500px;
+    box-shadow: 0 4px 24px rgba(0, 45, 98, 0.12);
+}
+
+.mobile-nav.scrolled .nav-logo {
+    font-size: 1rem;
+}
+
+.mobile-nav.scrolled .nav-logo::before {
+    width: 8px;
+    height: 8px;
 }
 
 .nav-logo {

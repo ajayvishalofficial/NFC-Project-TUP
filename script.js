@@ -41,6 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Setup Mobile Menu
     setupMobileMenu();
+
+    // Setup Navbar Scroll Behavior
+    setupNavbarScroll();
 });
 
 async function validateId(id) {
@@ -285,5 +288,33 @@ function setupMobileMenu() {
                 toggleMenu();
             }
         });
+    });
+}
+
+function setupNavbarScroll() {
+    const navbar = document.querySelector('.mobile-nav');
+    if (!navbar) return;
+
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function updateNavbar() {
+        const scrollY = window.scrollY;
+
+        if (scrollY > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+
+        lastScrollY = scrollY;
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(updateNavbar);
+            ticking = true;
+        }
     });
 }
