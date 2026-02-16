@@ -3,13 +3,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const tagId = params.get('id');
 
     if (!tagId) {
-        showView('invalid');
-        logAttempt(null, 'missing_id');
+        showView('home');
+        // logAttempt(null, 'home_page_visit'); // Optional logging
         return;
     }
 
     validateId(tagId);
     initCursor();
+
+    // Setup Home Navigation Buttons
+    document.querySelectorAll('.nav-btn-home').forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove the 'id' parameter from the URL using pushState
+            const url = new URL(window.location);
+            url.searchParams.delete('id');
+            window.history.pushState({}, '', url);
+
+            showView('home');
+        });
+    });
 
     // Setup Report Button
     const reportBtn = document.querySelector('.action-btn');
