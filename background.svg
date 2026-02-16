@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <defs>
+    <!-- Plant leaf pattern -->
+    <g id="leaf1">
+      <ellipse cx="0" cy="0" rx="25" ry="60" fill="#4A7A45" opacity="0.15" transform="rotate(-30)"/>
+      <path d="M 0,-60 Q 15,-30 0,0 Q -15,-30 0,-60" fill="#5C8A3A" opacity="0.2"/>
+    </g>
+    
+    <g id="leaf2">
+      <ellipse cx="0" cy="0" rx="20" ry="50" fill="#2E4A28" opacity="0.12" transform="rotate(45)"/>
+      <path d="M 0,-50 Q 12,-25 0,0 Q -12,-25 0,-50" fill="#4A6E3A" opacity="0.18"/>
+    </g>
+    
+    <g id="stem">
+      <line x1="0" y1="0" x2="0" y2="80" stroke="#5D4037" stroke-width="2" opacity="0.1"/>
+      <line x1="0" y1="0" x2="0" y2="80" stroke="#3E3228" stroke-width="1" opacity="0.15"/>
+    </g>
+    
+    <g id="branch">
+      <path d="M 0,0 Q 20,30 10,60" stroke="#8D6E63" stroke-width="1.5" fill="none" opacity="0.12"/>
+      <circle cx="10" cy="60" r="3" fill="#7A9E58" opacity="0.2"/>
+    </g>
+    
+    <g id="fern">
+      <path d="M 0,0 Q -5,15 -8,30 Q -10,45 -12,60" stroke="#4A7A45" stroke-width="1" fill="none" opacity="0.15"/>
+      <ellipse cx="-3" cy="15" rx="8" ry="4" fill="#5C8A3A" opacity="0.1"/>
+      <ellipse cx="-5" cy="30" rx="8" ry="4" fill="#5C8A3A" opacity="0.1"/>
+      <ellipse cx="-7" cy="45" rx="8" ry="4" fill="#5C8A3A" opacity="0.1"/>
+    </g>
+    
+    <g id="flower">
+      <circle cx="0" cy="0" r="8" fill="#8D6E63" opacity="0.15"/>
+      <circle cx="0" cy="0" r="4" fill="#D4A574" opacity="0.2"/>
+    </g>
+  </defs>
+  
+  <!-- Background base -->
+  <rect width="1200" height="1200" fill="transparent"/>
+  
+  <!-- Scattered plant elements creating a subtle texture -->
+  <!-- Top left quadrant -->
+  <use href="#leaf1" x="100" y="80"/>
+  <use href="#leaf2" x="180" y="150"/>
+  <use href="#stem" x="250" y="100"/>
+  <use href="#branch" x="150" y="200"/>
+  <use href="#fern" x="80" y="180"/>
+  <use href="#flower" x="200" y="120"/>
+  
+  <use href="#leaf1" x="320" y="60"/>
+  <use href="#leaf2" x="280" y="180"/>
+  <use href="#stem" x="350" y="140"/>
+  
+  <!-- Top right quadrant -->
+  <use href="#leaf2" x="650" y="90"/>
+  <use href="#leaf1" x="750" y="140"/>
+  <use href="#branch" x="850" y="80"/>
+  <use href="#fern" x="950" y="160"/>
+  <use href="#flower" x="720" y="100"/>
+  
+  <use href="#stem" x="800" y="200"/>
+  <use href="#leaf1" x="1050" y="120"/>
+  <use href="#leaf2" x="1100" y="180"/>
+  
+  <!-- Middle left -->
+  <use href="#fern" x="120" y="380"/>
+  <use href="#leaf1" x="200" y="420"/>
+  <use href="#branch" x="80" y="500"/>
+  <use href="#stem" x="280" y="450"/>
+  <use href="#flower" x="150" y="480"/>
+  
+  <use href="#leaf2" x="320" y="380"/>
+  <use href="#leaf1" x="380" y="520"/>
+  
+  <!-- Middle center -->
+  <use href="#leaf1" x="520" y="400"/>
+  <use href="#stem" x="600" y="380"/>
+  <use href="#branch" x="550" y="500"/>
+  <use href="#fern" x="650" y="450"/>
+  <use href="#flower" x="580" y="420"/>
+  
+  <!-- Middle right -->
+  <use href="#leaf2" x="850" y="420"/>
+  <use href="#leaf1" x="950" y="380"/>
+  <use href="#stem" x="1050" y="460"/>
+  <use href="#branch" x="900" y="520"/>
+  <use href="#fern" x="1100" y="400"/>
+  <use href="#flower" x="980" y="480"/>
+  
+  <!-- Bottom left quadrant -->
+  <use href="#branch" x="100" y="720"/>
+  <use href="#leaf1" x="180" y="780"/>
+  <use href="#fern" x="250" y="850"/>
+  <use href="#stem" x="150" y="900"/>
+  <use href="#flower" x="200" y="820"/>
+  
+  <use href="#leaf2" x="320" y="760"/>
+  <use href="#leaf1" x="280" y="920"/>
+  
+  <!-- Bottom center -->
+  <use href="#leaf1" x="520" y="780"/>
+  <use href="#stem" x="600" y="820"/>
+  <use href="#branch" x="550" y="900"/>
+  <use href="#fern" x="650" y="850"/>
+  <use href="#flower" x="580" y="760"/>
+  
+  <use href="#leaf2" x="480" y="920"/>
+  
+  <!-- Bottom right quadrant -->
+  <use href="#fern" x="850" y="780"/>
+  <use href="#leaf1" x="950" y="820"/>
+  <use href="#stem" x="1050" y="760"/>
+  <use href="#branch" x="900" y="900"/>
+  <use href="#flower" x="980" y="850"/>
+  
+  <use href="#leaf2" x="1100" y="920"/>
+  <use href="#leaf1" x="800" y="880"/>
+  
+  <!-- Additional scattered elements for density -->
+  <use href="#leaf1" x="420" y="220" transform="rotate(45 420 220)"/>
+  <use href="#leaf2" x="720" y="320" transform="rotate(-30 720 320)"/>
+  <use href="#branch" x="480" y="640"/>
+  <use href="#fern" x="820" y="640"/>
+  <use href="#flower" x="360" y="680"/>
+  <use href="#flower" x="760" y="580"/>
+  
+  <use href="#stem" x="140" y="640"/>
+  <use href="#stem" x="1080" y="680"/>
+  
+  <!-- More subtle background fills -->
+  <use href="#leaf1" x="60" y="300" opacity="0.5"/>
+  <use href="#leaf2" x="1140" y="340" opacity="0.5"/>
+  <use href="#leaf1" x="60" y="1000" opacity="0.5"/>
+  <use href="#leaf2" x="1140" y="1040" opacity="0.5"/>
+  
+  <use href="#branch" x="400" y="60" opacity="0.5"/>
+  <use href="#fern" x="800" y="1100" opacity="0.5"/>
+</svg>

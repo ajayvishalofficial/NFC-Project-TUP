@@ -28,9 +28,16 @@
 
 body {
     font-family: var(--font-main);
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    background: linear-gradient(135deg, #2E4A28 0%, #1a1a1a 100%);
     /* Fallback */
-    background: radial-gradient(circle at 50% 50%, #2E4A28 0%, #1a1a1a 100%);
+    background-image:
+        url('background.svg'),
+        radial-gradient(circle at 30% 40%, rgba(74, 122, 69, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 70% 60%, rgba(93, 64, 55, 0.3) 0%, transparent 50%),
+        linear-gradient(135deg, #2E4A28 0%, #1a1a1a 100%);
+    background-size: cover, 150% 150%, 150% 150%, 100% 100%;
+    background-position: center, 0% 0%, 100% 100%, center;
+    background-repeat: no-repeat;
     color: var(--neutral-dark);
     min-height: 100vh;
     min-height: 100dvh;
@@ -42,6 +49,27 @@ body {
     align-items: center;
     position: relative;
     /* Ensure scrollbar works */
+    animation: backgroundDrift 80s ease-in-out infinite;
+}
+
+@keyframes backgroundDrift {
+
+    0%,
+    100% {
+        background-position: center, 0% 0%, 100% 100%, center;
+    }
+
+    25% {
+        background-position: center, 10% 5%, 90% 95%, center;
+    }
+
+    50% {
+        background-position: center, 5% 10%, 95% 90%, center;
+    }
+
+    75% {
+        background-position: center, -5% 5%, 105% 95%, center;
+    }
 }
 
 
@@ -241,7 +269,7 @@ p {
     }
 }
 
-/* Eco-friendly organic shapes background */
+/* Additional floating plant elements overlay */
 body::before {
     content: '';
     position: fixed;
@@ -250,10 +278,10 @@ body::before {
     width: 120%;
     height: 120%;
     background:
-        radial-gradient(circle at 20% 30%, rgba(92, 138, 58, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(122, 158, 111, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(212, 165, 116, 0.05) 0%, transparent 50%);
-    animation: organicMove 20s ease-in-out infinite;
+        radial-gradient(circle at 20% 30%, rgba(74, 122, 69, 0.12) 0%, transparent 35%),
+        radial-gradient(circle at 80% 70%, rgba(92, 138, 58, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(93, 64, 55, 0.08) 0%, transparent 45%);
+    animation: organicMove 25s ease-in-out infinite;
     z-index: 0;
     pointer-events: none;
 }
@@ -262,11 +290,15 @@ body::before {
 
     0%,
     100% {
-        transform: translate(0, 0) scale(1);
+        transform: translate(0, 0) scale(1) rotate(0deg);
     }
 
-    50% {
-        transform: translate(-10px, 10px) scale(1.02);
+    33% {
+        transform: translate(-15px, 10px) scale(1.03) rotate(1deg);
+    }
+
+    66% {
+        transform: translate(10px, -8px) scale(0.98) rotate(-1deg);
     }
 }
 
@@ -292,7 +324,7 @@ body::before {
     .view-layer {
         padding: 1rem;
         /* Ensure padding respects safe areas */
-        padding-top: max(1rem, env(safe-area-inset-top));
+        padding-top: max(2.5rem, env(safe-area-inset-top));
         padding-bottom: max(1rem, env(safe-area-inset-bottom));
         padding-left: max(1rem, env(safe-area-inset-left));
         padding-right: max(1rem, env(safe-area-inset-right));
@@ -303,7 +335,7 @@ body::before {
     /* Spacer to push content down a bit visually if not scrolling */
     .view-layer::before {
         flex: 0 0 auto;
-        min-height: 2rem;
+        min-height: 1rem;
     }
 
     .glass-panel {
