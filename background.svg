@@ -1,156 +1,71 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1400" viewBox="0 0 1400 1400">
+<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- Cotton boll (fluffy white cotton) -->
-    <g id="cotton-boll">
-      <circle cx="0" cy="0" r="12" fill="#FFFFFF" opacity="0.9"/>
-      <circle cx="-6" cy="-6" r="10" fill="#F8F8F8" opacity="0.85"/>
-      <circle cx="6" cy="-6" r="10" fill="#F5F5F5" opacity="0.85"/>
-      <circle cx="-6" cy="6" r="10" fill="#F8F8F8" opacity="0.85"/>
-      <circle cx="6" cy="6" r="10" fill="#F5F5F5" opacity="0.85"/>
-      <!-- Stem -->
-      <line x1="0" y1="12" x2="0" y2="25" stroke="#2D5016" stroke-width="2" opacity="0.7"/>
-    </g>
-    
-    <!-- Cotton leaf (simple, elegant) -->
-    <g id="cotton-leaf">
-      <path d="M 0,0 Q 8,-15 0,-30 Q -8,-15 0,0" fill="#34A853" opacity="0.75"/>
-      <path d="M 0,0 Q 8,-15 0,-30 Q -8,-15 0,0" fill="none" stroke="#2D5016" stroke-width="0.5" opacity="0.6"/>
-    </g>
-    
-    <!-- Large decorative leaf -->
-    <g id="large-leaf">
-      <ellipse cx="0" cy="0" rx="18" ry="45" fill="#34A853" opacity="0.7" transform="rotate(-20)"/>
-      <path d="M 0,-45 L 0,45" stroke="#2D5016" stroke-width="1.5" opacity="0.5"/>
-      <path d="M 0,-30 Q 10,-25 8,-15" stroke="#2D5016" stroke-width="0.8" fill="none" opacity="0.4"/>
-      <path d="M 0,-30 Q -10,-25 -8,-15" stroke="#2D5016" stroke-width="0.8" fill="none" opacity="0.4"/>
-      <path d="M 0,0 Q 10,5 8,15" stroke="#2D5016" stroke-width="0.8" fill="none" opacity="0.4"/>
-      <path d="M 0,0 Q -10,5 -8,15" stroke="#2D5016" stroke-width="0.8" fill="none" opacity="0.4"/>
-    </g>
-    
-    <!-- Small accent leaf -->
-    <g id="small-leaf">
-      <ellipse cx="0" cy="0" rx="8" ry="20" fill="#4CAF50" opacity="0.65" transform="rotate(15)"/>
-      <line x1="0" y1="-20" x2="0" y2="20" stroke="#2D5016" stroke-width="0.8" opacity="0.4"/>
-    </g>
-    
-    <!-- Cotton plant branch -->
-    <g id="cotton-branch">
-      <path d="M 0,0 Q 15,20 10,45" stroke="#2D5016" stroke-width="2.5" fill="none" opacity="0.6"/>
-      <use href="#cotton-leaf" x="8" y="15" transform="rotate(30 8 15)"/>
-      <use href="#cotton-boll" x="10" y="45"/>
-    </g>
-    
-    <!-- Decorative cotton cluster -->
-    <g id="cotton-cluster">
-      <use href="#cotton-boll" x="0" y="0"/>
-      <use href="#cotton-boll" x="20" y="-5"/>
-      <use href="#cotton-boll" x="-18" y="8"/>
-      <use href="#cotton-leaf" x="-25" y="15" transform="rotate(-45 -25 15)"/>
-      <use href="#cotton-leaf" x="28" y="10" transform="rotate(45 28 10)"/>
-    </g>
+    <linearGradient id="cottonGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fcf3e3;stop-opacity:1" /> <stop offset="100%" style="stop-color:#f0e0c6;stop-opacity:1" /> </linearGradient>
+    <color id="cottonStroke" value="#d7c19e"/> <color id="leafLight" value="#c8e6c9"/>
+    <color id="leafMedium" value="#a5d6a7"/>
+    <color id="leafDark" value="#81c784"/>
+    <color id="bgColor" value="#eef7f0"/>
+
+    <pattern id="dense-cotton-pattern" x="0" y="0" width="240" height="240" patternUnits="userSpaceOnUse">
+      <rect width="240" height="240" fill="currentcolor" style="color: #eef7f0;"/>
+      
+      <g stroke-linecap="round" stroke-linejoin="round">
+        
+        <path d="M20,40 Q60,20 80,60 T140,80" fill="none" stroke="#a5d6a7" stroke-width="1.5" opacity="0.6"/>
+        <path d="M160,200 Q180,150 220,180" fill="none" stroke="#a5d6a7" stroke-width="1.5" opacity="0.6"/>
+        <circle cx="50" cy="180" r="4" fill="#c8e6c9"/>
+        <circle cx="200" cy="30" r="3" fill="#a5d6a7"/>
+        <circle cx="120" cy="120" r="5" fill="#dcedc8"/>
+
+        <g transform="translate(60, 70)">
+          <path d="M-20 -10 Q-40 -30 -10 -40 Q10 -30 -20 -10 Z" fill="#a5d6a7" stroke="#81c784"/>
+          <path d="M20 10 Q40 0 30 -30 Q0 -20 20 10 Z" fill="#c8e6c9" stroke="#a5d6a7"/>
+          
+          <g stroke="#d7c19e" stroke-width="1.5" fill="url(#cottonGradient)">
+            <circle cx="0" cy="-5" r="16"/>
+            <circle cx="-10" cy="2" r="10"/>
+            <circle cx="10" cy="2" r="10"/>
+            <circle cx="0" cy="8" r="9"/>
+          </g>
+          <path d="M-12 10 Q0 22 12 10 L0 28 Z" fill="#81c784" stroke="#66bb6a"/>
+        </g>
+
+        <g transform="translate(180, 170)">
+           <path d="M-15 15 Q-35 35 -5 35 Q5 15 -15 15 Z" fill="#a5d6a7" stroke="#81c784"/>
+          <path d="M15 -15 Q35 -25 25 -5 Q5 -5 15 -15 Z" fill="#c8e6c9" stroke="#a5d6a7"/>
+
+          <g stroke="#d7c19e" stroke-width="1.5" fill="url(#cottonGradient)">
+            <circle cx="0" cy="0" r="12"/>
+            <circle cx="-7" cy="-4" r="8"/>
+            <circle cx="7" cy="-4" r="8"/>
+          </g>
+           <path d="M-8 8 Q0 18 8 8 L0 20 Z" fill="#81c784" stroke="#66bb6a"/>
+        </g>
+
+         <g transform="translate(30, 200)">
+          <circle cx="0" cy="0" r="7" fill="url(#cottonGradient)" stroke="#d7c19e" stroke-width="1"/>
+           <path d="M-5 2 Q0 10 5 2 Z" fill="#81c784"/>
+           <path d="M0 5 Q0 20 15 15" fill="none" stroke="#81c784" stroke-width="1.5" stroke-linecap="round"/>
+        </g>
+        
+         <g transform="translate(160, 40)">
+           <circle cx="0" cy="0" r="6" fill="url(#cottonGradient)" stroke="#d7c19e" stroke-width="1"/>
+           <path d="M-4 2 Q0 8 4 2 Z" fill="#81c784"/>
+        </g>
+
+
+        <g transform="translate(110, 40) scale(0.6)">
+           <circle cx="0" cy="-5" r="5" fill="#a5d6a7"/>
+           <circle cx="-5" cy="3" r="5" fill="#a5d6a7"/>
+           <circle cx="5" cy="3" r="5" fill="#a5d6a7"/>
+        </g>
+        
+        <path d="M220 110 Q230 100 220 90 Q210 100 220 110 Z" fill="#c8e6c9" stroke="none"/>
+        <path d="M100 220 Q110 230 120 220 Q110 210 100 220 Z" fill="#a5d6a7" stroke="none"/>
+
+      </g>
+    </pattern>
   </defs>
-  
-  <!-- Background -->
-  <rect width="1400" height="1400" fill="#F5F5F0"/>
-  
-  <!-- Scattered cotton plants and leaves across the canvas -->
-  
-  <!-- Top section -->
-  <use href="#large-leaf" x="120" y="100" transform="rotate(-15 120 100)"/>
-  <use href="#cotton-cluster" x="280" y="80"/>
-  <use href="#small-leaf" x="200" y="140" transform="rotate(25 200 140)"/>
-  <use href="#cotton-branch" x="400" y="60"/>
-  <use href="#large-leaf" x="550" y="120" transform="rotate(20 550 120)"/>
-  <use href="#cotton-boll" x="480" y="90"/>
-  
-  <use href="#cotton-cluster" x="720" y="100"/>
-  <use href="#small-leaf" x="850" y="80" transform="rotate(-30 850 80)"/>
-  <use href="#large-leaf" x="980" y="110" transform="rotate(10 980 110)"/>
-  <use href="#cotton-branch" x="1100" y="70"/>
-  <use href="#cotton-boll" x="1250" y="95"/>
-  <use href="#small-leaf" x="1320" y="130" transform="rotate(40 1320 130)"/>
-  
-  <!-- Upper-middle section -->
-  <use href="#cotton-branch" x="80" y="280"/>
-  <use href="#large-leaf" x="220" y="320" transform="rotate(-25 220 320)"/>
-  <use href="#cotton-cluster" x="380" y="290"/>
-  <use href="#small-leaf" x="520" y="310" transform="rotate(15 520 310)"/>
-  <use href="#cotton-boll" x="640" y="295"/>
-  
-  <use href="#large-leaf" x="780" y="330" transform="rotate(30 780 330)"/>
-  <use href="#cotton-branch" x="920" y="270"/>
-  <use href="#cotton-cluster" x="1080" y="300"/>
-  <use href="#small-leaf" x="1220" y="285" transform="rotate(-20 1220 285)"/>
-  
-  <!-- Middle section -->
-  <use href="#cotton-cluster" x="150" y="520"/>
-  <use href="#large-leaf" x="300" y="550" transform="rotate(5 300 550)"/>
-  <use href="#cotton-branch" x="450" y="490"/>
-  <use href="#small-leaf" x="600" y="530" transform="rotate(-35 600 530)"/>
-  <use href="#cotton-boll" x="720" y="510"/>
-  
-  <use href="#large-leaf" x="850" y="540" transform="rotate(-10 850 540)"/>
-  <use href="#cotton-cluster" x="1000" y="500"/>
-  <use href="#cotton-branch" x="1150" y="520"/>
-  <use href="#small-leaf" x="1280" y="545" transform="rotate(25 1280 545)"/>
-  
-  <!-- Lower-middle section -->
-  <use href="#cotton-branch" x="100" y="720"/>
-  <use href="#large-leaf" x="250" y="760" transform="rotate(20 250 760)"/>
-  <use href="#cotton-cluster" x="400" y="730"/>
-  <use href="#small-leaf" x="550" y="750" transform="rotate(-15 550 750)"/>
-  <use href="#cotton-boll" x="680" y="735"/>
-  
-  <use href="#large-leaf" x="820" y="770" transform="rotate(-25 820 770)"/>
-  <use href="#cotton-branch" x="970" y="710"/>
-  <use href="#cotton-cluster" x="1120" y="740"/>
-  <use href="#small-leaf" x="1260" y="725" transform="rotate(30 1260 725)"/>
-  
-  <!-- Bottom section -->
-  <use href="#cotton-cluster" x="140" y="950"/>
-  <use href="#large-leaf" x="290" y="980" transform="rotate(-30 290 980)"/>
-  <use href="#cotton-branch" x="440" y="920"/>
-  <use href="#small-leaf" x="590" y="960" transform="rotate(10 590 960)"/>
-  <use href="#cotton-boll" x="710" y="945"/>
-  
-  <use href="#large-leaf" x="850" y="990" transform="rotate(15 850 990)"/>
-  <use href="#cotton-cluster" x="1000" y="930"/>
-  <use href="#cotton-branch" x="1150" y="960"/>
-  <use href="#small-leaf" x="1290" y="975" transform="rotate(-25 1290 975)"/>
-  
-  <!-- Very bottom -->
-  <use href="#large-leaf" x="180" y="1180" transform="rotate(25 180 1180)"/>
-  <use href="#cotton-cluster" x="340" y="1150"/>
-  <use href="#cotton-branch" x="500" y="1170"/>
-  <use href="#cotton-boll" x="650" y="1160"/>
-  <use href="#small-leaf" x="780" y="1190" transform="rotate(-20 780 1190)"/>
-  
-  <use href="#large-leaf" x="920" y="1175" transform="rotate(5 920 1175)"/>
-  <use href="#cotton-cluster" x="1080" y="1155"/>
-  <use href="#small-leaf" x="1220" y="1185" transform="rotate(35 1220 1185)"/>
-  
-  <!-- Additional scattered elements for density -->
-  <use href="#cotton-leaf" x="350" y="200" transform="rotate(60 350 200)"/>
-  <use href="#cotton-leaf" x="650" y="180" transform="rotate(-40 650 180)"/>
-  <use href="#cotton-leaf" x="1050" y="190" transform="rotate(20 1050 190)"/>
-  
-  <use href="#cotton-leaf" x="180" y="420" transform="rotate(-50 180 420)"/>
-  <use href="#cotton-leaf" x="500" y="400" transform="rotate(30 500 400)"/>
-  <use href="#cotton-leaf" x="880" y="430" transform="rotate(-15 880 430)"/>
-  <use href="#cotton-leaf" x="1180" y="410" transform="rotate(45 1180 410)"/>
-  
-  <use href="#cotton-leaf" x="220" y="650" transform="rotate(15 220 650)"/>
-  <use href="#cotton-leaf" x="560" y="630" transform="rotate(-25 560 630)"/>
-  <use href="#cotton-leaf" x="920" y="660" transform="rotate(35 920 660)"/>
-  <use href="#cotton-leaf" x="1220" y="640" transform="rotate(-30 1220 640)"/>
-  
-  <use href="#cotton-leaf" x="160" y="870" transform="rotate(-10 160 870)"/>
-  <use href="#cotton-leaf" x="480" y="850" transform="rotate(40 480 850)"/>
-  <use href="#cotton-leaf" x="800" y="880" transform="rotate(-35 800 880)"/>
-  <use href="#cotton-leaf" x="1140" y="860" transform="rotate(20 1140 860)"/>
-  
-  <use href="#cotton-leaf" x="280" y="1080" transform="rotate(25 280 1080)"/>
-  <use href="#cotton-leaf" x="620" y="1060" transform="rotate(-45 620 1060)"/>
-  <use href="#cotton-leaf" x="960" y="1090" transform="rotate(10 960 1090)"/>
-  <use href="#cotton-leaf" x="1280" y="1070" transform="rotate(-20 1280 1070)"/>
+  <rect width="100%" height="100%" fill="url(#dense-cotton-pattern)"/>
 </svg>
