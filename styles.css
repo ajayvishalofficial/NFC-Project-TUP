@@ -382,7 +382,7 @@ body {
 
 /* Dark Section (Experience) */
 .home-section.dark-bg {
-    background: var(--brand-blue);
+    background: linear-gradient(135deg, var(--brand-blue) 0%, #001a3d 100%);
     color: white;
     width: 100vw;
     position: relative;
@@ -390,8 +390,8 @@ body {
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+    padding: 6rem 2rem;
+    box-shadow: inset 0 2px 0 rgba(197, 160, 89, 0.1);
 }
 
 .section-header.light-text h2 {
@@ -461,13 +461,15 @@ body {
 
 /* App Showcase */
 .app-showcase {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     gap: 4rem;
     margin-top: 6rem;
-    max-width: 1100px;
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
+    flex-wrap: wrap;
 }
 
 .showcase-item {
@@ -880,8 +882,11 @@ body {
     background: rgba(0, 45, 98, 0.75);
     backdrop-filter: blur(30px) saturate(180%);
     -webkit-backdrop-filter: blur(30px) saturate(180%);
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+    border-radius: 0 0 20px 20px;
+    margin: 0 auto;
+    max-width: 100%;
 }
 
 .nav-logo {
